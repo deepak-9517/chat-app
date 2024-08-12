@@ -1,0 +1,44 @@
+.email-div {
+  height: 90vh;
+}
+
+.user-name {
+  border: 2px solid black;
+  border-radius: 50%;
+  padding: 1rem;
+  height: 100px;
+  width: 100px;
+  font-size: 25px;
+  font-weight: 600;
+  background-color: rgb(209, 232, 232);
+}
+
+.updateuserdetail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(173, 179, 184, 0.3);
+  width: 100%;
+  height: 100vh;
+}
+
+.update-div {
+  background-color: #fff;
+  color: black;
+  border-radius: 5px;
+  min-width: 30vw;
+  /* height: 40vh; */
+}
+
+.form-control:focus {
+  border-color: black !important;
+  outline: 0;
+  box-shadow: none !important;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
