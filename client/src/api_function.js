@@ -1,5 +1,5 @@
-export const url = "http://localhost:8080/api";
-export const socketUrl = "http://localhost:8080";
+export const url = "https://chatapp-backend-qltw.onrender.com/api";
+export const socketUrl = "https://chatapp-backend-qltw.onrender.com";
 import axios from "axios";
 
 export const userRegister = async (formdata) => {
