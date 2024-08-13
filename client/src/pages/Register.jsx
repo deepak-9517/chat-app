@@ -31,11 +31,6 @@ const Register = () => {
       let imageUrl = "";
       if (inputData.profile_pic) {
         res = await uploadFile(inputData.profile_pic);
-        console.log(res.data.secure_url, "imag");
-        // setInputData((prevData) => ({
-        //   ...prevData,
-        //   profile_pic: res.data.secure_url,
-        // }));
         imageUrl = res.data.secure_url;
       }
       console.log(inputData, "Data to send");

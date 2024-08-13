@@ -22,7 +22,7 @@ const Sidebar = () => {
   const state = useSelector((state) => state.user.userDetail);
   const [allUser, setAllUser] = useState([]);
   const [searchUser, setSearchUser] = useState(false);
-  const [searchInput, setSearchInput] = useState("");
+  const [searchInput, setSearchInput] = useState(null);
   const [loader, setLoader] = useState(false);
   const [allChatList, setAllChatList] = useState([]);
   const dispatch = useDispatch();
@@ -30,12 +30,12 @@ const Sidebar = () => {
   const navigate = useNavigate();
   const logout = async (id) => {
     try {
-      localStorage.removeItem("token");
       const res = await logOut(id);
       if (res.error) {
         toast.error(res.message);
       }
       if (res?.data?.status) {
+        localStorage.removeItem("token");
         dispatch(setLogout());
         toast.success(res?.data?.message);
         navigate("/email");
@@ -85,7 +85,7 @@ const Sidebar = () => {
   function getSocketDetail(userId) {
     socketConnection.emit("sidebar", userId);
     socketConnection.on("sidebar-list", (data) => {
-      console.log(data, "sidebar-list");
+      console.log(data, "sidebar-record");
       const payload = data.map((con) => {
         let message = con.messages[con.messages.length - 1];
         let unseenMsg = con.messages.reduce(
@@ -98,17 +98,18 @@ const Sidebar = () => {
       setAllChatList(payload);
     });
   }
-
+  // console.log(allChatList);
   return (
     <div className="w-full h-full flex">
       <div className="bg-slate-100 w-14 h-full rounded-tr-lg rounded-br-lg py-5 text-slate-600 flex flex-col justify-between">
         <div className="top">
-          <div
+          <Link
+            to="/"
             className="cursor-pointer h-15 w-15 flex justify-center items-center pt-2 pb-2"
             title="Chat"
           >
             <IoChatbubbleEllipsesSharp size={30} />
-          </div>
+          </Link>
           <div
             className="cursor-pointer h-15 w-15 flex justify-center items-center pt-2 pb-2 mt-3"
             title="Add friend"
